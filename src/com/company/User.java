@@ -13,7 +13,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean verify_login(String name, String surname) {
+    public boolean verify_login(String user, String password) {
         if((this.user == user) && (this.password == password)) {
             return true;
         }
@@ -27,5 +27,5 @@ public class User {
     public String getSurname() {
         return surname;
     }
-    
+
 }
