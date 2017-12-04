@@ -28,7 +28,7 @@ public abstract class User {
         return isDoctor;
     }
 
-    private String getUser() {
+    public String getUser() {
         return user;
     }
 
@@ -42,19 +42,18 @@ public abstract class User {
 
     public static User findByUsername(ArrayList users, String username){
         Iterator userIterator = users.iterator();
-
+        User ret = null;
         while(userIterator.hasNext()) {
             User each = (User) userIterator.next();
-            String test = each.getUser();
-            if(test == username) {
-                return each;
+            if (username.equals(each.getUser())) {
+                ret = each;
             }
             else {
                 System.out.println("it's not him.");
             }
         }
 
-        return null;
+        return ret;
     }
 
 }
