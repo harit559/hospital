@@ -10,16 +10,16 @@ public class Patient {
     private int day;
     private int month;
     private int year;
-    private int height;
+    private double height;
     private double weight;
     private String bloodType;
     private ArrayList<Record> records;
 
     private static int count = 0;
 
-    public Patient(String name, String surname, int day, int month, int year, int height, double weight, String bloodType) {
         count++;
         hn = count;
+    public Patient(String name, String surname, int day, int month, int year, int height, double weight, String bloodType) {
         this.name = name;
         this.surname = surname;
         this.day = day;
@@ -56,7 +56,7 @@ public class Patient {
         return year;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
