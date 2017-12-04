@@ -10,28 +10,36 @@ public class Main {
 	// initialize all database
         ArrayList users = new ArrayList();
 
-        String username;
-        String password;
+        User user;
 
+        createDummyData(users);
+
+        while (true) {
+            String username;
+            String password;
+            System.out.println("Login");
+            username = IOUtils.getString("Username:");
+            password = IOUtils.getString("Password:");
+
+            user = User.findByUsername(users, username);
+            if (user == null) {
+                System.out.println("User not found");
+            }
+            else if (!user.verify_login(password)) {
+                System.out.println("wrong password");
+            }else {
+                break;
+            }
+        }
+        
+        System.out.println("Welcome To hSystem");
+
+
+    }
+
+    private static void createDummyData(ArrayList users) {
         Doctor doctor = new Doctor("Ekacha", "Techasuknirun","ekacha", "1234");
         users.add(doctor);
-
-        System.out.println("Login");
-        username = IOUtils.getString("Username:");
-        password = IOUtils.getString("Password:");
-
-        User user = User.findByUsername(users,username);
-        if(user == null){
-            System.out.println("User not found");
-        }
-
-//        if(user.isDoctor()) {
-//            Doctor login_user = (Doctor) user;
-//        }
-//        else {
-//            Clerk login_user = (Clerk) user;
-//        }
-//
-//        login
     }
+
 }
