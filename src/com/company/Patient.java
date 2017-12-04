@@ -1,8 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Patient {
+    private int hn;
     private String name;
     private String surname;
     private int day;
@@ -13,7 +15,11 @@ public class Patient {
     private String bloodType;
     private ArrayList<Record> records;
 
+    private static int count = 0;
+
     public Patient(String name, String surname, int day, int month, int year, int height, double weight, String bloodType) {
+        count++;
+        hn = count;
         this.name = name;
         this.surname = surname;
         this.day = day;
@@ -27,6 +33,8 @@ public class Patient {
     public boolean addRecord(Record record) {
         return records.add(record);
     }
+
+    public int getHn() {return hn;}
 
     public String getName() {
         return name;
@@ -78,5 +86,18 @@ public class Patient {
     public boolean updateWeight(double weight) {
         this.weight = weight;
         return true;
+    }
+
+    public static Patient findPatient(ArrayList<Patient> patients, String hos_num) {
+        Iterator patientIterator = patients.iterator();
+        Patient ret = null;
+        while(patientIterator.hasNext()) {
+            Patient each = (Patient) patientIterator.next();
+            if (Integer.parseInt(hos_num) == each.getHn()) {
+                ret = each;
+            }
+        }
+
+        return ret;
     }
 }

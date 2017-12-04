@@ -7,6 +7,7 @@ public class Record {
     protected Date date;
 
     public Record(Doctor doctor) {
+        this.doctor = doctor;
         date = new Date();
     }
 }
