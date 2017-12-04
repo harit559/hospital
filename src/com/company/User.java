@@ -18,7 +18,7 @@ public abstract class User {
     }
 
     public boolean verify_login( String password) {
-        if(this.password == password) {
+        if(this.password.equals(password)) {
             return true;
         }
         return false;
